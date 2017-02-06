@@ -47,12 +47,27 @@ const MAPPINGS = {
 
   'custom.mode.normal.copy_selection_or_url': 'yy',
   'custom.mode.normal.copy_as_markdown': 'ym',
+  'custom.mode.normal.copy_as_hatena': 'yh',
   'custom.mode.normal.click_toolbar_pocket': 'mp'
 };
 
 const {commands} = vimfx.modes.normal;
 
 const CUSTOM_COMMANDS = [
+  [
+    {
+      name: 'copy_as_hatena',
+      description: 'Copy title and url as Markdown',
+      category: 'location',
+      order: commands.copy_current_url.order + 3
+    }, ({vim}) => {
+      let url = vim.window.gBrowser.selectedBrowser.currentURI.spec;
+      let title = vim.window.gBrowser.selectedBrowser.contentTitle;
+      let s = `[${url}:title=${title}]`;
+      gClipboardHelper.copyString(s);
+      vim.notify(`Copied to clipboard: ${s}`);
+    }
+  ],
   [
     {
       name: 'copy_as_markdown',
