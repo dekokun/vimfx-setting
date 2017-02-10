@@ -122,5 +122,12 @@ vimfx.addKeyOverrides(
   ]
 )
 
+// for trello
+vimfx.addKeyOverrides(
+  [ location => location.hostname === 'trello.com',
+    ['q']
+  ]
+)
+
 Preferences.set(FIREFOX_PREFS);
 
