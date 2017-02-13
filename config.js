@@ -18,6 +18,7 @@ const VIMFX_PREFS = {
 };
 
 const MAPPINGS = {
+  'copy_current_url': '',
   'go_home': '',
   'stop': '<c-escape>',
   'stop_all': 'a<c-escape>',
